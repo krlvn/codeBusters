@@ -11,5 +11,10 @@ urlpatterns = [
     path('users/', include('userapp.urls')),
 ]
 
+handler400 = 'mainapp.views_errors.handler400'
+handler403 = 'mainapp.views_errors.handler403'
+handler404 = 'mainapp.views_errors.handler404'
+handler500 = 'mainapp.views_errors.handler500'
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

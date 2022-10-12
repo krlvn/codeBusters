@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}400 page{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row-md-6">
+        <div class="d-flex align-items-center justify-content-center vh-100">
+            <div class="text-center">
+                <h1 class="display-1 fw-bold">400</h1>
+                <p class="fs-3"> <span class="text-danger">Opps!</span> Bad Request.</p>
+                <p class="lead">
+                    You've sent a bad request.
+                  </p>
+                <a href="/" class="btn btn-primary">Go Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
