@@ -17,6 +17,7 @@ class Page404(TemplateView):
         context = super().get_context_data(**kwargs)
         return context
 
+
 class DetailedArticle(TemplateView):
     template_name = "detailed_article.html"
 
@@ -24,9 +25,6 @@ class DetailedArticle(TemplateView):
         context = super().get_context_data(**kwargs)
         return context
 
-
-def reg_page(request):
-    return render(request, 'register.html')
 
 def terms_of_service(request):
     return render(request, 'terms_of_service.html')

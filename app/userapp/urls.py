@@ -1,9 +1,12 @@
-from django.urls import path, include
+from django.urls import path
+import userapp.views as userapp
 
-from userapp.views import Register
+
+app_name = 'userapp'
 
 
 urlpatterns = [
-    path('', include('django.contrib.auth.urls')),
-    path('register/', Register.as_view(), name='register'),
+    path('login/', userapp.login, name='login'),
+    path('logout/', userapp.logout, name='logout'),
+    path('register/', userapp.register, name='register'),
 ]

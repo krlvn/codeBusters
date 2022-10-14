@@ -12,8 +12,15 @@
     align-content: center;
     justify-content: center;
     margin: 3vh 2vh 3vh 2vh;
+
 }
 
 .modal-content {
     max-width: 450px;
+}
+
+form {
+    width: 75%;
+  background: gray;
+  margin: 0 auto;
 }

@@ -1,30 +1,36 @@
-from django.contrib.auth import authenticate, login
-from django.views import View
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.urls import reverse
+from userapp.forms import MyUserRegisterForm
+from django.contrib import auth
+from userapp.forms import MyUserLoginForm
 
-from userapp.forms import UserCreateForm
 
-
-class Register(View):
-    template_name = 'registration/register.html'
-
-    def get(self, request):
-        context = {
-            'form': UserCreateForm()
-        }
-        return render(request, self.template_name, context)
-
-    def post(self, request):
-        form = UserCreateForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
-            login(request, user)
+def login(request):
+    login_form = MyUserLoginForm(data=request.POST)
+    if request.method == 'POST' and login_form.is_valid():
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=username, password=password)
+        if user and user.is_active:
+            auth.login(request, user)
             return redirect('/')
-        context = {
-            'form': form
-        }
-        return render(request, self.template_name, context)
+    content = {'login_form': login_form}
+    return render(request, 'userapp/login.html', content)
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
+
+
+def register(request):
+
+    if request.method == 'POST':
+        register_form = MyUserRegisterForm(request.POST, request.FILES)
+        if register_form.is_valid():
+            register_form.save()
+            return HttpResponseRedirect(reverse('users:login'))
+    else:
+        register_form = MyUserRegisterForm()
+    content = {'register_form': register_form}
+    return render(request, 'userapp/register.html', content)
