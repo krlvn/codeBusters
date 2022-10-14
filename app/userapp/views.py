@@ -24,7 +24,6 @@ def logout(request):
 
 
 def register(request):
-
     if request.method == 'POST':
         register_form = MyUserRegisterForm(request.POST, request.FILES)
         if register_form.is_valid():
