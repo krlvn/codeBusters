@@ -17,20 +17,20 @@ User = get_user_model()
 #        fields = ("username", "email")
 
 class MyUserLoginForm(AuthenticationForm):
-    def init(self, *args, **kwargs):
-        super().init(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
         self.fields["username"].widget.attrs.update({
             'name': 'username',
             'id': 'floatingInput',
             'type': 'text',
-            'class': 'form-control rounded-4',
+            'class': 'form-control rounded-2',
         }),
         self.fields["password"].widget.attrs.update({
             'name': 'password',
             'id': 'floatingPassword',
             'type': 'password',
-            'class': 'form-control rounded-4',
+            'class': 'form-control rounded-2',
         })
 
     class Meta:
@@ -39,32 +39,32 @@ class MyUserLoginForm(AuthenticationForm):
 
 
 class MyUserRegisterForm(UserCreationForm):
-    def init(self, *args, **kwargs):
-        super().init(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
         self.fields["username"].widget.attrs.update({
             'name': 'username',
             'id': 'floatingInput',
             'type': 'text',
-            'class': 'form-control rounded-4',
+            'class': 'form-control rounded-2',
         }),
         self.fields["email"].widget.attrs.update({
             'name': 'email',
             'id': 'floatingInput',
             'type': 'email',
-            'class': 'form-control rounded-4',
+            'class': 'form-control rounded-2',
         }),
         self.fields["password1"].widget.attrs.update({
             'name': 'password1',
             'id': 'floatingPassword',
             'type': 'password',
-            'class': 'form-control rounded-4',
+            'class': 'form-control rounded-2',
         }),
         self.fields["password2"].widget.attrs.update({
             'name': 'password2',
             'id': 'floatingPassword',
             'type': 'password',
-            'class': 'form-control rounded-4',
+            'class': 'form-control rounded-2',
         })
 
     class Meta:

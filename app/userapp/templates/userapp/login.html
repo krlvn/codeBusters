@@ -13,11 +13,18 @@
         <div  class="modal-body p-5 pt-0 ">
             <form action="{% url 'users:login' %}" method="post" class="" >
                 {% csrf_token %}
+                <div class="mb-3">
                     {{login_form.username}}
                     <label for="floatingInput">Введите ваш логин</label>
+                </div>
+                <div class="mb-3">
                     {{login_form.password}}
-                <label for="floatingPassword">Введите ваш пароль</label>
-                <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">Войти</button>
+                    <label for="floatingPassword">Введите ваш пароль</label>
+                </div>
+                <div class="mb-3">
+                    {% include 'mainapp/includes/messages.html' %}
+                </div>
+                <button class="w-100 mb-2 btn btn-lg rounded-2 btn-primary" type="submit">Войти</button>
             </form>
         </div>
     </div>
