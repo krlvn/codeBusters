@@ -113,7 +113,7 @@
                 <br>
                 <div class="text-end">
 
-                    <a type="button" class="btn btn-outline-secondary articleButtons" title="Прокомментировать"
+                    <a type="button" class="btn btn-outline-secondary mt-2 articleButtons" title="Прокомментировать"
                         href="#commentForm">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-chat-quote-fill" viewBox="0 0 16 16">
@@ -124,7 +124,7 @@
 
                     </a>
 
-                    <a type="button" class="btn btn-outline-warning likeButton" title="Лайкнуть"
+                    <a type="button" class="btn btn-outline-warning mt-2 likeButton" title="Лайкнуть"
                         data-like="{% if request.user.is_authenticated %}{% url 'api:post_like' post.id %}{% endif %}">
                         <div class="likeContainer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
@@ -135,13 +135,13 @@
                             </path>
 
                         </svg>
-                        <span class="likeSpan{% if post.likes_count == 0 %} likeSpanHidden{% endif %}">{{ post.likes_count }}</span>
+                        <span class="likeSpan{% if post.likes_count == 0 %} likeSpanHidden{% endif %} mt-2">{{ post.likes_count }}</span>
                     </div>
                     </a>
 
 
                     {% if user == post.user or user.is_superuser or user.is_moderator %}
-                    <a type="button" class="btn btn-outline-success articleButtons"
+                    <a type="button" class="btn btn-outline-success mt-2 articleButtons"
                         href="{% url 'mainapp:post-edit' post.id %}" title="Редактировать статью">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-pen-fill" viewBox="0 0 16 16">
@@ -151,7 +151,7 @@
                         </svg>
                     </a>
 
-                    <a type="button" class="btn btn-outline-danger articleButtons articleButtons"
+                    <a type="button" class="btn btn-outline-danger mt-2 articleButtons articleButtons"
                         href="{% url 'mainapp:post_delete' post.id %}" title="Удалить статью">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-trash3-fill" viewBox="0 0 16 16">
@@ -163,10 +163,10 @@
 
                     {% if user.is_superuser or user.is_moderator %}
                     {% if post.active %}
-                    <a type="button" class="btn btn-success articleModerButton" data-amoder="{% url 'api:post_active' post.id %}" 
+                    <a type="button" class="btn btn-success mt-2 articleModerButton" data-amoder="{% url 'api:post_active' post.id %}" 
                         title="Отклонить">Одобрено</a>
                     {% else %}
-                    <a type="button" class="btn btn-danger articleModerButton" data-amoder="{% url 'api:post_active' post.id %}" 
+                    <a type="button" class="btn btn-danger mt-2 articleModerButton" data-amoder="{% url 'api:post_active' post.id %}" 
                         title="Одобрить">Отклонено</a>
                     {% endif %}
                     {% endif %}
