@@ -28,7 +28,7 @@ let text = document.getElementById("id_text");
 document.addEventListener("DOMContentLoaded", (event) => {
     event.preventDefault();
     try {
-    text.value = ''
+        text.value = ''
     } catch (err) {
         //pass
     }
@@ -92,7 +92,6 @@ likeButtons.forEach(likeButton => {
                 ("GET", requestURL, false);
             xhr.send();
             const likeJson = JSON.parse(xhr.response);
-            console.log(likeJson)
             with (likeButton.querySelector(".likeSpanComment")) {
                 if (xhr.status === 401) {
                     return
@@ -117,7 +116,6 @@ articleModerButton.forEach(articleModerButton => {
             ("GET", requestURL, false);
         xhr.send();
         const articleModerJson = JSON.parse(xhr.response);
-        console.log('articleModerJson', articleModerJson.active)
         if (articleModerJson.active === true) {
             articleModerButton.classList.remove('btn-danger');
             articleModerButton.classList.add('btn-success');
@@ -127,7 +125,6 @@ articleModerButton.forEach(articleModerButton => {
             articleModerButton.classList.add('btn-danger');
             articleModerButton.innerHTML = 'Отклонено'
         }
-
     });
 });
 
@@ -141,7 +138,6 @@ commentModerButton.forEach(commentModerButton => {
             ("GET", requestURL, false);
         xhr.send();
         const commentModerJson = JSON.parse(xhr.response);
-        console.log('commentModerJson', commentModerJson.active)
         if (commentModerJson.active === true) {
             commentModerButton.classList.remove('btn-danger');
             commentModerButton.classList.add('btn-success');
@@ -151,6 +147,5 @@ commentModerButton.forEach(commentModerButton => {
             commentModerButton.classList.add('btn-danger');
             commentModerButton.innerHTML = 'Отклонено'
         }
-
     });
 });
