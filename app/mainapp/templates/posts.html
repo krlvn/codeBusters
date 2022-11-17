@@ -48,11 +48,11 @@
                 <p class="mb-2">{{ post.content|safe|truncatewords:60 }}</p>
                 <div class="btn-group">
                     <div class="col-8">
-                        <a href="{% url 'mainapp:post_detail' post.id %}" class="btn btn-primary">Продолжить
+                        <a href="{% url 'mainapp:post_detail' post.id %}" class="btn btn-primary mt-2">Продолжить
                             чтение</a>
                         {% if user == post.user or user.is_superuser or user.is_moderator %}
 
-                        <a type="button" class="btn btn-outline-success articleButtons"
+                        <a type="button" class="btn btn-outline-success mt-2 articleButtons"
                            href="{% url 'mainapp:post-edit' post.id %}" title="Редактировать статью">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-pen-fill" viewBox="0 0 16 16">
@@ -62,7 +62,7 @@
                             </svg>
                         </a>
 
-                        <a type="button" class="btn btn-outline-danger articleButtons"
+                        <a type="button" class="btn btn-outline-danger mt-2 articleButtons"
                             href="{% url 'mainapp:post_delete' post.id %}" title="Удалить статью">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-trash3-fill" viewBox="0 0 16 16">
@@ -74,11 +74,11 @@
 
                             {% if user.is_superuser or user.is_moderator %}
                                 {% if post.active %}
-                                    <a type="button" class="btn btn-success articleModerButton"
-                                       data-amoder="{% url 'mainapp:post_active' post.id %}" title="Отклонить">Одобрено</a>
+                                    <a type="button" class="btn btn-success mt-2 articleModerButton"
+                                       data-amoder="{% url 'api:post_active' post.id %}" title="Отклонить">Одобрено</a>
                                 {% else %}
-                                   <a type="button" class="btn btn-danger articleModerButton"
-                                      data-amoder="{% url 'mainapp:post_active' post.id %}" title="Одобрить">Отклонено</a>
+                                   <a type="button" class="btn btn-danger mt-2 articleModerButton"
+                                      data-amoder="{% url 'api:post_active' post.id %}" title="Одобрить">Отклонено</a>
                                 {% endif %}
                             {% endif %}
 
